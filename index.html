@@ -3556,8 +3556,8 @@ J'apprends à transformer les chiffres en décisions.</p>
     try {
       const res = await fetch('https://formspree.io/f/mwvznpgv', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString()
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ email: from, subject: subject, message: body })
       });
       if (res.ok) {
         mailHint.textContent = '✓ Message envoyé ! Je vous répondrai rapidement.';
