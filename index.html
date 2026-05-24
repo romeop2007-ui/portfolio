@@ -3547,10 +3547,18 @@ J'apprends à transformer les chiffres en décisions.</p>
     mailSendBtn.disabled = true;
     mailSendBtn.textContent = 'Envoi en cours…';
 
-    const data = new FormData(mailForm);
+    const params = new URLSearchParams();
+    params.append('form-name', 'contact');
+    params.append('email', from);
+    params.append('subject', subject);
+    params.append('message', body);
 
     try {
-      const res = await fetch('/', { method: 'POST', body: data });
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString()
+      });
       if (res.ok) {
         mailHint.textContent = '✓ Message envoyé ! Je vous répondrai rapidement.';
         mailHint.style.color = '#22c55e';
