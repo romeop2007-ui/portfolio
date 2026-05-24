@@ -3554,7 +3554,7 @@ J'apprends à transformer les chiffres en décisions.</p>
     params.append('message', body);
 
     try {
-      const res = await fetch('/', {
+      const res = await fetch('https://formspree.io/f/mwvznpgv', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString()
